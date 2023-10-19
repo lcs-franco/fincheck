@@ -1,4 +1,4 @@
-import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
+import { IsEmail, IsNotEmpty, IsString, MinLength } from 'class-validator';
 
 export class SigninDto {
   /**
@@ -12,9 +12,11 @@ export class SigninDto {
 
   /**
    * Senha do usuário cadastrado
-   * @example Password@123
+   * OBS: A senha deve ter no minimo 8 caracteres
+   * @example Senha123
    */
   @IsString()
   @IsNotEmpty()
+  @MinLength(8)
   password: string;
 }
