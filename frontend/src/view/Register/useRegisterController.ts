@@ -28,7 +28,7 @@ export function useRegisterController() {
     resolver: zodResolver(schema),
   });
 
-  const { mutateAsync, isPending } = useMutation({
+  const { mutateAsync, isLoading } = useMutation({
     mutationFn: async (data: SignupParams) => {
       return authService.signup(data);
     },
@@ -46,5 +46,5 @@ export function useRegisterController() {
     }
   });
 
-  return { register, handleSubmit, errors, isPending };
+  return { register, handleSubmit, errors, isLoading };
 }
