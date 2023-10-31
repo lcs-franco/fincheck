@@ -7,7 +7,7 @@ import { EyeIcon } from '../../../components/icons/EyeIcon';
 import { useAccountsController } from './useAccountsController';
 
 export function Accounts() {
-  const { setSliderState, sliderState } = useAccountsController();
+  const { setSliderState, sliderState, windowWidth } = useAccountsController();
 
   return (
     <div className="bg-teal-900 rounded-2xl w-full h-full md:p-10 px-4 py-8 flex flex-col">
@@ -25,11 +25,11 @@ export function Accounts() {
         </div>
       </div>
 
-      <div className="flex-1 flex flex-col justify-end">
+      <div className="flex-1 flex flex-col justify-end mt-10 md:mt-0">
         <div>
           <Swiper
             spaceBetween={16}
-            slidesPerView={2.1}
+            slidesPerView={windowWidth >= 500 ? 2.1 : 1.2}
             onSlideChange={(swiper) => {
               setSliderState({
                 isBeginning: swiper.isBeginning,
