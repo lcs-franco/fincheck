@@ -17,6 +17,13 @@ async function bootstrap() {
     .setTitle('FinCheck')
     .setDescription('FinCheck API description')
     .setVersion('1.0')
+    .addBearerAuth(
+      {
+        type: 'http',
+        description: 'JWT obtained from auth routes',
+      },
+      'accessToken',
+    )
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);

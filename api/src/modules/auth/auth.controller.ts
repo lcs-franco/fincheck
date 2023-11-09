@@ -19,8 +19,12 @@ export class AuthController {
 
   @Post('signin')
   @ApiCreatedResponse({
-    description: 'Usuário criado e logado',
-    type: String,
+    description: 'User created and logged',
+    schema: {
+      example: {
+        accessToken: 'JSON Web Token',
+      },
+    },
   })
   @ApiUnauthorizedResponse({ description: 'Invalid credentials.' })
   signin(@Body() signinDto: SigninDto) {
@@ -29,8 +33,12 @@ export class AuthController {
 
   @Post('signup')
   @ApiCreatedResponse({
-    description: 'Usuário logado',
-    content: { accessToken: new Object() },
+    description: 'Logged user',
+    schema: {
+      example: {
+        accessToken: 'JSON Web Token',
+      },
+    },
   })
   @ApiConflictResponse({ description: 'This e-mail is already in use!' })
   signup(@Body() signupDto: SignupDto) {

@@ -13,8 +13,9 @@ import { BankAccountsService } from './services/bank-accounts.service';
 import { CreateBankAccountDto } from './dto/create-bank-account.dto';
 import { ActiveUserId } from 'src/shared/decorators/ActiveUserId';
 import { UpdateBankAccountDto } from './dto/update-bank-account.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
+@ApiBearerAuth('accessToken')
 @ApiTags('bank-accounts')
 @Controller('bank-accounts')
 export class BankAccountsController {

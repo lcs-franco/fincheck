@@ -2,7 +2,10 @@ import { Controller, Get } from '@nestjs/common';
 
 import { ActiveUserId } from 'src/shared/decorators/ActiveUserId';
 import { CategoriesService } from './services/categories.service';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
+@ApiBearerAuth('accessToken')
+@ApiTags('categories')
 @Controller('categories')
 export class CategoriesController {
   constructor(private readonly categoriesService: CategoriesService) {}

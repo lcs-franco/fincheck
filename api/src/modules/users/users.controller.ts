@@ -2,7 +2,9 @@ import { Controller, Get } from '@nestjs/common';
 
 import { UsersService } from './users.service';
 import { ActiveUserId } from 'src/shared/decorators/ActiveUserId';
+import { ApiBearerAuth } from '@nestjs/swagger';
 
+@ApiBearerAuth('accessToken')
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
