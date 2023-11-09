@@ -2,7 +2,7 @@ import { IsString, IsNotEmpty, IsEmail, MinLength } from 'class-validator';
 
 export class SignupDto {
   /**
-   * Nome que o usuário irá cadastrar
+   * Name that the user will register
    * @example John
    */
   @IsString()
@@ -10,8 +10,8 @@ export class SignupDto {
   name: string;
 
   /**
-   * Email que o usuário irá cadastrar
-   * OBS: Deve ser um email válido
+   * Email that the user will register
+   * OBS: Must be a valid email
    * @example mail@mail.com
    */
   @IsString()
@@ -20,9 +20,9 @@ export class SignupDto {
   email: string;
 
   /**
-   * Senha que o usuário irá cadastrar
-   * OBS: A senha deve ter no minimo 8 caracteres
-   * @example Senha123
+   * Password that the user will register
+   * OBS: The password must be at least 8 characters long
+   * @example Potato69
    */
   @IsString()
   @IsNotEmpty()

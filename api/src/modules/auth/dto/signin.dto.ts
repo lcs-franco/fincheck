@@ -2,7 +2,7 @@ import { IsEmail, IsNotEmpty, IsString, MinLength } from 'class-validator';
 
 export class SigninDto {
   /**
-   * Email do usuário cadastrado
+   * Email that the user will register
    * @example mail@mail.com
    */
   @IsString()
@@ -11,9 +11,9 @@ export class SigninDto {
   email: string;
 
   /**
-   * Senha do usuário cadastrado
-   * OBS: A senha deve ter no minimo 8 caracteres
-   * @example Senha123
+   * Password that the user will register
+   * OBS: The password must be at least 8 characters long
+   * @example Potato69
    */
   @IsString()
   @IsNotEmpty()
