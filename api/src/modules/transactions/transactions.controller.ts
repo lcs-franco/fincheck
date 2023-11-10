@@ -28,7 +28,7 @@ import { TransactionsService } from './services/transactions.service';
 import { OptionalParseUUIDPipe } from 'src/shared/pipes/OptionalParseUUIDPipe';
 import { TransactionType } from './entities/Transaction';
 import { OptionalParseEnumPipe } from 'src/shared/pipes/OptionalParseEnumPipe';
-import { TransactionSwaggerDto } from './dto/transactionSwagger.dto';
+import { TransactionSwaggerDto } from './dto/transaction-swagger.dto';
 
 @ApiBearerAuth('accessToken')
 @ApiTags('transactions')
