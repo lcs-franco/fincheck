@@ -2,7 +2,12 @@ import { Controller, Get } from '@nestjs/common';
 
 import { UsersService } from './users.service';
 import { ActiveUserId } from 'src/shared/decorators/ActiveUserId';
-import { ApiBearerAuth, ApiOkResponse, ApiOperation } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiOkResponse,
+  ApiOperation,
+  ApiUnauthorizedResponse,
+} from '@nestjs/swagger';
 
 @ApiBearerAuth('accessToken')
 @Controller('users')
@@ -19,6 +24,16 @@ export class UsersController {
         email: 'mail@mail.com',
       },
     },
+    description: 'Success. Returns a user',
+  })
+  @ApiUnauthorizedResponse({
+    schema: {
+      example: {
+        statusCode: 401,
+        message: 'Unauthorized',
+      },
+    },
+    description: 'UnauthorizedException.',
   })
   //Route function
   me(@ActiveUserId() userId: string) {
