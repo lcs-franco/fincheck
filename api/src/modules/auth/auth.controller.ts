@@ -7,6 +7,7 @@ import { IsPublic } from 'src/shared/decorators/IsPublic';
 import {
   ApiConflictResponse,
   ApiCreatedResponse,
+  ApiOperation,
   ApiTags,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
@@ -18,8 +19,9 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('signin')
+  //Documentation functions
+  @ApiOperation({ description: 'Log in route' })
   @ApiCreatedResponse({
-    description: 'User created and logged',
     schema: {
       example: {
         accessToken: 'JSON Web Token',
@@ -27,13 +29,15 @@ export class AuthController {
     },
   })
   @ApiUnauthorizedResponse({ description: 'Invalid credentials.' })
+  //Route function
   signin(@Body() signinDto: SigninDto) {
     return this.authService.signin(signinDto);
   }
 
   @Post('signup')
+  //Documentation functions
+  @ApiOperation({ description: 'Register route' })
   @ApiCreatedResponse({
-    description: 'Logged user',
     schema: {
       example: {
         accessToken: 'JSON Web Token',
@@ -41,6 +45,7 @@ export class AuthController {
     },
   })
   @ApiConflictResponse({ description: 'This e-mail is already in use!' })
+  //Route function
   signup(@Body() signupDto: SignupDto) {
     return this.authService.signup(signupDto);
   }
