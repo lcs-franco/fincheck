@@ -30,7 +30,7 @@ export class CreateTransactionDto {
 
   /**
    * Name of the transaction
-   * @example water bill
+   * @example 'water bill'
    */
   @IsString()
   @IsNotEmpty()
@@ -56,7 +56,7 @@ export class CreateTransactionDto {
 
   /**
    * Type of the transaction
-   * @example 375
+   * @example 'INCOME'
    */
   @IsNotEmpty()
   @IsEnum(TransactionType)
