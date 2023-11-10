@@ -2,7 +2,7 @@ import { Controller, Get } from '@nestjs/common';
 
 import { UsersService } from './users.service';
 import { ActiveUserId } from 'src/shared/decorators/ActiveUserId';
-import { ApiBearerAuth, ApiOkResponse } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOkResponse, ApiOperation } from '@nestjs/swagger';
 
 @ApiBearerAuth('accessToken')
 @Controller('users')
@@ -10,6 +10,7 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Get('/me')
+  @ApiOperation({ description: 'Route to get the user from the accessToken' })
   @ApiOkResponse({
     schema: {
       example: {
