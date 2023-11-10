@@ -10,6 +10,7 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Get('/me')
+  //Documentation functions
   @ApiOperation({ description: 'Route to get the user from the accessToken' })
   @ApiOkResponse({
     schema: {
@@ -19,6 +20,7 @@ export class UsersController {
       },
     },
   })
+  //Route function
   me(@ActiveUserId() userId: string) {
     return this.usersService.getUserById(userId);
   }
