@@ -52,7 +52,7 @@ export class TransactionsController {
 
   @Get()
   //Documentation functions
-  @ApiOperation({ description: 'List transactions by userId' })
+  @ApiOperation({ description: 'List all transactions by userId' })
   @ApiQuery({
     name: 'month',
     description: 'In array style, i.e. first month is 0',
