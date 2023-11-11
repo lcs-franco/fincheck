@@ -16,9 +16,12 @@ import { UpdateBankAccountDto } from './dto/update-bank-account.dto';
 import {
   ApiBearerAuth,
   ApiCreatedResponse,
+  ApiNoContentResponse,
+  ApiNotFoundResponse,
   ApiOkResponse,
   ApiOperation,
   ApiTags,
+  ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 import { BankAccountSwaggerDto } from './dto/bank-account-swagger.dto';
 
@@ -34,6 +37,15 @@ export class BankAccountsController {
   @ApiCreatedResponse({
     type: BankAccountSwaggerDto,
   })
+  @ApiUnauthorizedResponse({
+    schema: {
+      example: {
+        statusCode: 401,
+        message: 'Unauthorized',
+      },
+    },
+    description: 'UnauthorizedException.',
+  })
   //Route function
   create(
     @ActiveUserId() userId: string,
@@ -46,6 +58,15 @@ export class BankAccountsController {
   //Documentation functions
   @ApiOperation({ description: 'List all bank accounts by userId' })
   @ApiOkResponse({ type: [BankAccountSwaggerDto] })
+  @ApiUnauthorizedResponse({
+    schema: {
+      example: {
+        statusCode: 401,
+        message: 'Unauthorized',
+      },
+    },
+    description: 'UnauthorizedException.',
+  })
   //Route function
   findAll(@ActiveUserId() userId: string) {
     return this.bankAccountsService.findAllByUserId(userId);
@@ -55,6 +76,25 @@ export class BankAccountsController {
   //Documentation functions
   @ApiOperation({ description: 'Update bank account by userId' })
   @ApiOkResponse({ type: BankAccountSwaggerDto })
+  @ApiUnauthorizedResponse({
+    schema: {
+      example: {
+        statusCode: 401,
+        message: 'Unauthorized',
+      },
+    },
+    description: 'UnauthorizedException.',
+  })
+  @ApiNotFoundResponse({
+    schema: {
+      example: {
+        statusCode: 404,
+        message: '* not found',
+        error: 'Not Found',
+      },
+    },
+    description: 'NotFoundException.',
+  })
   //Route function
   update(
     @ActiveUserId() userId: string,
@@ -72,6 +112,26 @@ export class BankAccountsController {
   @HttpCode(204)
   //Documentation functions
   @ApiOperation({ description: 'Delete bank account by userId' })
+  @ApiNoContentResponse()
+  @ApiUnauthorizedResponse({
+    schema: {
+      example: {
+        statusCode: 401,
+        message: 'Unauthorized',
+      },
+    },
+    description: 'UnauthorizedException.',
+  })
+  @ApiNotFoundResponse({
+    schema: {
+      example: {
+        statusCode: 404,
+        message: '* not found',
+        error: 'Not Found',
+      },
+    },
+    description: 'NotFoundException.',
+  })
   //Route function
   remove(
     @ActiveUserId() userId: string,
