@@ -7,6 +7,7 @@ import {
   ApiOkResponse,
   ApiOperation,
   ApiTags,
+  ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 import { CategorySwaggerDto } from './dto/category-swagger.dto';
 
@@ -20,6 +21,15 @@ export class CategoriesController {
   //Documentation functions
   @ApiOperation({ description: 'List all categories by userId' })
   @ApiOkResponse({ type: CategorySwaggerDto })
+  @ApiUnauthorizedResponse({
+    schema: {
+      example: {
+        statusCode: 401,
+        message: 'Unauthorized',
+      },
+    },
+    description: 'UnauthorizedException.',
+  })
   //Route function
   findAll(@ActiveUserId() userId: string) {
     return this.categoriesService.findAllByUserId(userId);
