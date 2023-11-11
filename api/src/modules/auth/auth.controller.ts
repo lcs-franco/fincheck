@@ -28,7 +28,16 @@ export class AuthController {
       },
     },
   })
-  @ApiUnauthorizedResponse({ description: 'Invalid credentials.' })
+  @ApiUnauthorizedResponse({
+    schema: {
+      example: {
+        statusCode: 401,
+        message: 'Invalid credentials.',
+        error: 'Unauthorized',
+      },
+    },
+    description: 'Unauthorized Exception.',
+  })
   //Route function
   signin(@Body() signinDto: SigninDto) {
     return this.authService.signin(signinDto);
@@ -44,7 +53,16 @@ export class AuthController {
       },
     },
   })
-  @ApiConflictResponse({ description: 'This e-mail is already in use!' })
+  @ApiConflictResponse({
+    schema: {
+      example: {
+        statusCode: 409,
+        message: 'This e-mail is already in use!',
+        error: 'Conflict',
+      },
+    },
+    description: 'Conflict Exception',
+  })
   //Route function
   signup(@Body() signupDto: SignupDto) {
     return this.authService.signup(signupDto);
