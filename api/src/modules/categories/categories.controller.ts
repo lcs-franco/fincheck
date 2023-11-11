@@ -20,7 +20,10 @@ export class CategoriesController {
   @Get()
   //Documentation functions
   @ApiOperation({ description: 'List all categories by userId' })
-  @ApiOkResponse({ type: CategorySwaggerDto })
+  @ApiOkResponse({
+    description: 'Returned all categories of the user',
+    type: CategorySwaggerDto,
+  })
   @ApiUnauthorizedResponse({
     schema: {
       example: {

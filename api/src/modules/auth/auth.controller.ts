@@ -27,6 +27,7 @@ export class AuthController {
         accessToken: 'JSON Web Token',
       },
     },
+    description: 'Returned an access token',
   })
   @ApiUnauthorizedResponse({
     schema: {
@@ -52,6 +53,7 @@ export class AuthController {
         accessToken: 'JSON Web Token',
       },
     },
+    description: 'Returned an access token',
   })
   @ApiConflictResponse({
     schema: {

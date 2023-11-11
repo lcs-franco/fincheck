@@ -35,6 +35,7 @@ export class BankAccountsController {
   //Documentation functions
   @ApiOperation({ description: 'Create bank account' })
   @ApiCreatedResponse({
+    description: 'Returned created bank account',
     type: BankAccountSwaggerDto,
   })
   @ApiUnauthorizedResponse({
@@ -57,7 +58,10 @@ export class BankAccountsController {
   @Get()
   //Documentation functions
   @ApiOperation({ description: 'List all bank accounts by userId' })
-  @ApiOkResponse({ type: [BankAccountSwaggerDto] })
+  @ApiOkResponse({
+    description: 'Returned an array of bank accounts',
+    type: [BankAccountSwaggerDto],
+  })
   @ApiUnauthorizedResponse({
     schema: {
       example: {
@@ -75,7 +79,10 @@ export class BankAccountsController {
   @Put(':bankAccountId')
   //Documentation functions
   @ApiOperation({ description: 'Update bank account by userId' })
-  @ApiOkResponse({ type: BankAccountSwaggerDto })
+  @ApiOkResponse({
+    description: 'Returned updated bank account',
+    type: BankAccountSwaggerDto,
+  })
   @ApiUnauthorizedResponse({
     schema: {
       example: {
@@ -112,7 +119,7 @@ export class BankAccountsController {
   @HttpCode(204)
   //Documentation functions
   @ApiOperation({ description: 'Delete bank account by userId' })
-  @ApiNoContentResponse()
+  @ApiNoContentResponse({ description: 'No body returned for response' })
   @ApiUnauthorizedResponse({
     schema: {
       example: {

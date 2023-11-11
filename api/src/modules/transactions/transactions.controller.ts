@@ -44,6 +44,7 @@ export class TransactionsController {
   //Documentation functions
   @ApiOperation({ description: 'Create transaction' })
   @ApiCreatedResponse({
+    description: 'Returned created transaction',
     type: TransactionSwaggerDto,
   })
   @ApiUnauthorizedResponse({
@@ -82,7 +83,10 @@ export class TransactionsController {
   })
   @ApiQuery({ name: 'bankAccountId', required: false })
   @ApiQuery({ name: 'type', required: false, enum: TransactionType })
-  @ApiOkResponse({ type: [TransactionSwaggerDto] })
+  @ApiOkResponse({
+    description: 'Returned an array of transactions',
+    type: [TransactionSwaggerDto],
+  })
   @ApiUnauthorizedResponse({
     schema: {
       example: {
@@ -122,7 +126,10 @@ export class TransactionsController {
   @Put(':transactionId')
   //Documentation functions
   @ApiOperation({ description: 'Update transaction by userId' })
-  @ApiOkResponse({ type: TransactionSwaggerDto })
+  @ApiOkResponse({
+    description: 'Returned updated transaction',
+    type: TransactionSwaggerDto,
+  })
   @ApiUnauthorizedResponse({
     schema: {
       example: {
@@ -159,7 +166,7 @@ export class TransactionsController {
   @HttpCode(204)
   //Documentation functions
   @ApiOperation({ description: 'Delete transaction by userId' })
-  @ApiNoContentResponse()
+  @ApiNoContentResponse({ description: 'No body returned for response' })
   @ApiUnauthorizedResponse({
     schema: {
       example: {

@@ -24,7 +24,7 @@ export class UsersController {
         email: 'mail@mail.com',
       },
     },
-    description: 'Success. Returns a user',
+    description: 'Returned the user',
   })
   @ApiUnauthorizedResponse({
     schema: {
