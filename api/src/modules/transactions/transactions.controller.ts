@@ -13,12 +13,16 @@ import {
 } from '@nestjs/common';
 
 import {
+  ApiBadRequestResponse,
   ApiBearerAuth,
   ApiCreatedResponse,
+  ApiNoContentResponse,
+  ApiNotFoundResponse,
   ApiOkResponse,
   ApiOperation,
   ApiQuery,
   ApiTags,
+  ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 
 import { CreateTransactionDto } from './dto/create-transaction.dto';
@@ -42,6 +46,25 @@ export class TransactionsController {
   @ApiCreatedResponse({
     type: TransactionSwaggerDto,
   })
+  @ApiUnauthorizedResponse({
+    schema: {
+      example: {
+        statusCode: 401,
+        message: 'Unauthorized',
+      },
+    },
+    description: 'UnauthorizedException.',
+  })
+  @ApiNotFoundResponse({
+    schema: {
+      example: {
+        statusCode: 404,
+        message: '* not found',
+        error: 'Not Found',
+      },
+    },
+    description: 'NotFoundException.',
+  })
   //Route function
   create(
     @ActiveUserId() userId: string,
@@ -60,6 +83,25 @@ export class TransactionsController {
   @ApiQuery({ name: 'bankAccountId', required: false })
   @ApiQuery({ name: 'type', required: false, enum: TransactionType })
   @ApiOkResponse({ type: [TransactionSwaggerDto] })
+  @ApiUnauthorizedResponse({
+    schema: {
+      example: {
+        statusCode: 401,
+        message: 'Unauthorized',
+      },
+    },
+    description: 'UnauthorizedException.',
+  })
+  @ApiBadRequestResponse({
+    schema: {
+      example: {
+        statusCode: 400,
+        message: 'Validation failed (numeric string is expected)',
+        error: 'Bad Request',
+      },
+    },
+    description: 'BadRequestException.',
+  })
   //Route function
   findAll(
     @ActiveUserId() userId: string,
@@ -81,6 +123,25 @@ export class TransactionsController {
   //Documentation functions
   @ApiOperation({ description: 'Update transaction by userId' })
   @ApiOkResponse({ type: TransactionSwaggerDto })
+  @ApiUnauthorizedResponse({
+    schema: {
+      example: {
+        statusCode: 401,
+        message: 'Unauthorized',
+      },
+    },
+    description: 'UnauthorizedException.',
+  })
+  @ApiNotFoundResponse({
+    schema: {
+      example: {
+        statusCode: 404,
+        message: '* not found',
+        error: 'Not Found',
+      },
+    },
+    description: 'NotFoundException.',
+  })
   //Route function
   update(
     @ActiveUserId() userId: string,
@@ -98,6 +159,26 @@ export class TransactionsController {
   @HttpCode(204)
   //Documentation functions
   @ApiOperation({ description: 'Delete transaction by userId' })
+  @ApiNoContentResponse()
+  @ApiUnauthorizedResponse({
+    schema: {
+      example: {
+        statusCode: 401,
+        message: 'Unauthorized',
+      },
+    },
+    description: 'UnauthorizedException.',
+  })
+  @ApiNotFoundResponse({
+    schema: {
+      example: {
+        statusCode: 404,
+        message: '* not found',
+        error: 'Not Found',
+      },
+    },
+    description: 'NotFoundException.',
+  })
   //Route function
   remove(
     @ActiveUserId() userId: string,
