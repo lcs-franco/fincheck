@@ -14,6 +14,7 @@ import { CreateBankAccountDto } from './dto/create-bank-account.dto';
 import { ActiveUserId } from 'src/shared/decorators/ActiveUserId';
 import { UpdateBankAccountDto } from './dto/update-bank-account.dto';
 import {
+  ApiBadRequestResponse,
   ApiBearerAuth,
   ApiCreatedResponse,
   ApiNoContentResponse,
@@ -46,6 +47,16 @@ export class BankAccountsController {
       },
     },
     description: 'UnauthorizedException.',
+  })
+  @ApiBadRequestResponse({
+    schema: {
+      example: {
+        statusCode: 400,
+        message: ['***'],
+        error: 'Bad Request',
+      },
+    },
+    description: 'BadRequestException.',
   })
   //Route function
   create(
@@ -91,6 +102,16 @@ export class BankAccountsController {
       },
     },
     description: 'UnauthorizedException.',
+  })
+  @ApiBadRequestResponse({
+    schema: {
+      example: {
+        statusCode: 400,
+        message: ['***'],
+        error: 'Bad Request',
+      },
+    },
+    description: 'BadRequestException.',
   })
   @ApiNotFoundResponse({
     schema: {

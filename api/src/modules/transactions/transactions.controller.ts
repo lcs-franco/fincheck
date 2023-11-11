@@ -56,6 +56,16 @@ export class TransactionsController {
     },
     description: 'UnauthorizedException.',
   })
+  @ApiBadRequestResponse({
+    schema: {
+      example: {
+        statusCode: 400,
+        message: ['***'],
+        error: 'Bad Request',
+      },
+    },
+    description: 'BadRequestException.',
+  })
   @ApiNotFoundResponse({
     schema: {
       example: {
@@ -138,6 +148,16 @@ export class TransactionsController {
       },
     },
     description: 'UnauthorizedException.',
+  })
+  @ApiBadRequestResponse({
+    schema: {
+      example: {
+        statusCode: 400,
+        message: ['***'],
+        error: 'Bad Request',
+      },
+    },
+    description: 'BadRequestException.',
   })
   @ApiNotFoundResponse({
     schema: {
