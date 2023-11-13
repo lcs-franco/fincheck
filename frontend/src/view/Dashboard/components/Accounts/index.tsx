@@ -5,9 +5,17 @@ import { AccountCard } from './AccountCard';
 import { AccountsSliderNavigation } from './AccountsSliderNavigation';
 import { EyeIcon } from '../../../components/icons/EyeIcon';
 import { useAccountsController } from './useAccountsController';
+import { formatCurrency } from '../../../../app/utils/formatCurrency';
+import { cn } from '../../../../app/utils/cn';
 
 export function Accounts() {
-  const { setSliderState, sliderState, windowWidth } = useAccountsController();
+  const {
+    setSliderState,
+    sliderState,
+    windowWidth,
+    areValuesVisible,
+    toggleValuesVisibility,
+  } = useAccountsController();
 
   return (
     <div className="bg-teal-900 rounded-2xl w-full h-full md:p-10 px-4 py-8 flex flex-col">
@@ -15,12 +23,20 @@ export function Accounts() {
         <span className="tracking-[-0.5px] text-white block">Salto total</span>
 
         <div className="flex items-center gap-2">
-          <strong className="tracking-[-1px] text-2xl text-white">
-            R$ 1000,00
+          <strong
+            className={cn(
+              'tracking-[-1px] text-2xl text-white',
+              !areValuesVisible && 'blur-md'
+            )}
+          >
+            {formatCurrency(1000)}
           </strong>
 
-          <button className="w-8 h-8 flex items-center justify-center">
-            <EyeIcon open />
+          <button
+            onClick={toggleValuesVisibility}
+            className="w-8 h-8 flex items-center justify-center"
+          >
+            <EyeIcon open={!areValuesVisible} />
           </button>
         </div>
       </div>
