@@ -1,5 +1,5 @@
-import { Logo } from '../components/Logo';
-import { UserMenu } from '../components/UserMenu';
+import { Logo } from '../../components/Logo';
+import { UserMenu } from '../../components/UserMenu';
 import { Accounts } from './components/Accounts';
 import { DashboardProvider } from './components/DashboardContext';
 import { Transactions } from './components/Transactions';

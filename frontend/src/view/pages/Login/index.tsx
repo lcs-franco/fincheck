@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 
-import { Input } from '../components/Input';
-import { Button } from '../components/Button';
 import { useLoginController } from './useLoginController';
+import { Input } from '../../components/Input';
+import { Button } from '../../components/Button';
 
 export function Login() {
   const { handleSubmit, register, errors, isPending } = useLoginController();

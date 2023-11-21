@@ -4,9 +4,9 @@ import { z } from 'zod';
 import { useMutation } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 
-import { authService } from '../../app/services/authService';
-import { SigninParams } from '../../app/services/authService/signin';
-import { useAuth } from '../../app/hooks/useAuth';
+import { SigninParams } from '../../../app/services/authService/signin';
+import { authService } from '../../../app/services/authService';
+import { useAuth } from '../../../app/hooks/useAuth';
 
 const schema = z.object({
   email: z
@@ -27,7 +27,7 @@ export function useLoginController() {
     resolver: zodResolver(schema),
   });
 
-  const { mutateAsync, isPending } = useMutation({
+  const { mutateAsync, isLoading } = useMutation({
     mutationFn: async (data: SigninParams) => {
       return authService.signin(data);
     },
@@ -45,5 +45,5 @@ export function useLoginController() {
     }
   });
 
-  return { register, handleSubmit, errors, isPending };
+  return { register, handleSubmit, errors, isLoading };
 }

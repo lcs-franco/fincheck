@@ -1,16 +1,16 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-import { FilterIcon } from '../../../components/icons/FilterIcon';
-import { MONTHS } from '../../../../app/config/constants';
 import { SliderOption } from './SliderOption';
 import { SliderNavigation } from './SliderNavigation';
-import { CategoryIcon } from '../../../components/icons/categories/CategoryIcon';
-import { formatCurrency } from '../../../../app/utils/formatCurrency';
 import { useTransactionsController } from './useTransactionsController';
-import { cn } from '../../../../app/utils/cn';
-import { Spinner } from '../../../components/Spinner';
-import EmptyStateImg from '../../../../assets/Empty-State.svg';
+import EmptyStateImg from '../../../../../assets/empty-state.svg';
 import { TransactionTypeDropdown } from './TransactionTypeDropdown';
+import { Spinner } from '../../../../components/Spinner';
+import { FilterIcon } from '../../../../components/icons/FilterIcon';
+import { MONTHS } from '../../../../../app/config/constants';
+import { CategoryIcon } from '../../../../components/icons/categories/CategoryIcon';
+import { cn } from '../../../../../app/utils/cn';
+import { formatCurrency } from '../../../../../app/utils/formatCurrency';
 
 export function Transactions() {
   const { areValuesVisible, isInitialLoading, isLoading, transactions } =
