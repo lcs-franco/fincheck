@@ -5,9 +5,22 @@ export function useFiltersModal() {
     null | string
   >(null);
 
+  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
+
   function handleSelectedBankAccount(bankAccountId: string) {
-    setSelectedBankAccountId(bankAccountId);
+    setSelectedBankAccountId((prevState) =>
+      prevState === bankAccountId ? null : bankAccountId
+    );
   }
 
-  return { selectedBankAccountId, handleSelectedBankAccount };
+  function handleYearChange(step: number) {
+    setSelectedYear((prevState) => prevState + step);
+  }
+
+  return {
+    selectedBankAccountId,
+    handleSelectedBankAccount,
+    selectedYear,
+    handleYearChange,
+  };
 }
