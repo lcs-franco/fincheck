@@ -25,7 +25,23 @@ export function NewAccountModal() {
 
         <div className="mt-10 flex flex-col gap-4">
           <Input name="name" type="text" placeholder="Nome da conta" />
-          <Select error="Selecione uma fruta" />
+          <Select
+            placeholder="Tipo"
+            options={[
+              {
+                value: 'CHECKING',
+                label: 'Conta Corrente',
+              },
+              {
+                value: 'INVESTMENT',
+                label: 'Investimentos',
+              },
+              {
+                value: 'CASH',
+                label: 'Dinheiro Físico',
+              },
+            ]}
+          />
         </div>
       </form>
     </Modal>
