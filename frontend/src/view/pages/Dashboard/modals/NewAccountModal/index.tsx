@@ -1,3 +1,4 @@
+import { Controller } from 'react-hook-form';
 import { Button } from '../../../../components/Button';
 import { ColorsDropdown } from '../../../../components/ColorsDropdown';
 import { Input } from '../../../../components/Input';
@@ -7,8 +8,14 @@ import { Select } from '../../../../components/Select';
 import { useNewAccountModalController } from './useNewAccountModalController';
 
 export function NewAccountModal() {
-  const { closeNewAccountModal, isNewAccountModalOpen } =
-    useNewAccountModalController();
+  const {
+    closeNewAccountModal,
+    isNewAccountModalOpen,
+    errors,
+    handleSubmit,
+    register,
+    control,
+  } = useNewAccountModalController();
 
   return (
     <Modal
@@ -16,20 +23,39 @@ export function NewAccountModal() {
       open={isNewAccountModalOpen}
       onClose={closeNewAccountModal}
     >
-      <form>
+      <form onSubmit={handleSubmit}>
         <div>
-          <span className="text-gray-600 tracking-[-0.5px] text-xs">Saldo</span>
+          <span className="text-gray-600 tracking-[-0.5px] text-xs">
+            Saldo inicial
+          </span>
           <div className="flex items-center gap-2">
             <span className="text-gray-600 tracking-[-0.5px] text-lg">R$</span>
-            <InputCurrency />
+            <Controller
+              control={control}
+              name="initialBalance"
+              defaultValue="0"
+              render={({ field: { onChange, value } }) => (
+                <InputCurrency
+                  error={errors.initialBalance?.message}
+                  onChange={onChange}
+                  value={value}
+                />
+              )}
+            />
           </div>
         </div>
 
         <div className="mt-10 flex flex-col gap-4">
-          <Input name="name" type="text" placeholder="Nome da conta" />
+          <Input
+            type="text"
+            placeholder="Nome da conta"
+            error={errors.name?.message}
+            {...register('name')}
+          />
 
           <Select
             placeholder="Tipo"
+            error={errors.type?.message}
             options={[
               {
                 value: 'CHECKING',
@@ -46,7 +72,7 @@ export function NewAccountModal() {
             ]}
           />
 
-          <ColorsDropdown />
+          <ColorsDropdown error={errors.color?.message} />
 
           <Button type="submit" className="w-full mt-6">
             Criar
