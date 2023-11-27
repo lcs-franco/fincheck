@@ -15,6 +15,7 @@ export function NewAccountModal() {
     handleSubmit,
     register,
     control,
+    isLoading,
   } = useNewAccountModalController();
 
   return (
@@ -53,28 +54,48 @@ export function NewAccountModal() {
             {...register('name')}
           />
 
-          <Select
-            placeholder="Tipo"
-            error={errors.type?.message}
-            options={[
-              {
-                value: 'CHECKING',
-                label: 'Conta Corrente',
-              },
-              {
-                value: 'INVESTMENT',
-                label: 'Investimentos',
-              },
-              {
-                value: 'CASH',
-                label: 'Dinheiro Físico',
-              },
-            ]}
+          <Controller
+            control={control}
+            name="type"
+            defaultValue="CHECKING"
+            render={({ field: { onChange, value } }) => (
+              <Select
+                placeholder="Tipo"
+                error={errors.type?.message}
+                onChange={onChange}
+                value={value}
+                options={[
+                  {
+                    value: 'CHECKING',
+                    label: 'Conta Corrente',
+                  },
+                  {
+                    value: 'INVESTMENT',
+                    label: 'Investimentos',
+                  },
+                  {
+                    value: 'CASH',
+                    label: 'Dinheiro Físico',
+                  },
+                ]}
+              />
+            )}
           />
 
-          <ColorsDropdown error={errors.color?.message} />
+          <Controller
+            control={control}
+            name="color"
+            defaultValue=""
+            render={({ field: { onChange, value } }) => (
+              <ColorsDropdown
+                error={errors.color?.message}
+                onChange={onChange}
+                value={value}
+              />
+            )}
+          />
 
-          <Button type="submit" className="w-full mt-6">
+          <Button type="submit" className="w-full mt-6" isPending={isLoading}>
             Criar
           </Button>
         </div>
