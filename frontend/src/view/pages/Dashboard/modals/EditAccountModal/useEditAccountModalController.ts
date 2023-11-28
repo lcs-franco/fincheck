@@ -9,7 +9,10 @@ import { currencyStringToNumber } from '../../../../../app/utils/currencyStringT
 import toast from 'react-hot-toast';
 
 const schema = z.object({
-  initialBalance: z.string().min(1, 'Saldo inicial é obrigatório'),
+  initialBalance: z.union([
+    z.string().min(1, 'Saldo inicial é obrigatório'),
+    z.number(),
+  ]),
   name: z.string().min(1, 'Nome da conta é obrigatório'),
   type: z.enum(['INVESTMENT', 'CHECKING', 'CASH']),
   color: z.string().min(1, 'Cor é obrigatório'),
@@ -18,34 +21,40 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 export function useEditAccountModalController() {
-  const { isEditAccountModalOpen, closeEditAccountModal } = useDashboard();
+  const { isEditAccountModalOpen, closeEditAccountModal, accountBeingEdited } =
+    useDashboard();
 
   const {
     register,
     handleSubmit: hookFormSubmit,
     control,
     formState: { errors },
-    reset,
   } = useForm<FormData>({
     resolver: zodResolver(schema),
+    defaultValues: {
+      color: accountBeingEdited?.color,
+      name: accountBeingEdited?.name,
+      type: accountBeingEdited?.type,
+      initialBalance: accountBeingEdited?.initialBalance,
+    },
   });
 
   const queryClient = useQueryClient();
-  const { isLoading, mutateAsync } = useMutation(bankAccountsService.create);
+  const { isLoading, mutateAsync } = useMutation(bankAccountsService.update);
 
   const handleSubmit = hookFormSubmit(async (data) => {
     try {
       await mutateAsync({
         ...data,
-        initialBalance: currencyStringToNumber(data.initialBalance),
+        initialBalance: currencyStringToNumber(data.initialBalance as string),
+        id: accountBeingEdited!.id,
       });
 
       queryClient.invalidateQueries({ queryKey: ['bankAccounts'] });
-      toast.success('Conta cadastrada com sucesso!');
+      toast.success('A conta foi alterada com sucesso!');
       closeEditAccountModal();
-      reset();
     } catch {
-      toast.error('Erro ao cadastrar a conta!');
+      toast.error('Erro ao salvar as alterações');
     }
   });
 

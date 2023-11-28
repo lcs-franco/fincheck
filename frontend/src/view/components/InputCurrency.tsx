@@ -4,7 +4,7 @@ import { cn } from '../../app/utils/cn';
 
 interface InputCurrencyProps {
   error?: string;
-  value?: string;
+  value?: string | number;
   onChange?(value: string): void;
 }
 
@@ -25,7 +25,7 @@ export function InputCurrency({ error, value, onChange }: InputCurrencyProps) {
       {error && (
         <div className="flex gap-2 items-center mt-2 text-red-900">
           <CrossCircledIcon />
-          <span className=" text-xs">{error}</span>
+          <span className="text-xs">{error}</span>
         </div>
       )}
     </div>

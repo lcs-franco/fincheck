@@ -96,7 +96,7 @@ export function EditAccountModal() {
           />
 
           <Button type="submit" className="w-full mt-6" isPending={isLoading}>
-            Criar
+            Salvar
           </Button>
         </div>
       </form>
