@@ -10,27 +10,13 @@ interface FiltersModalProps {
   onClose(): void;
 }
 
-const mockBankAccount = [
-  {
-    id: '123',
-    name: 'Nubank',
-  },
-  {
-    id: '456',
-    name: 'XP Investimentos',
-  },
-  {
-    id: '789',
-    name: 'B2U',
-  },
-];
-
 export function FiltersModal({ onClose, open }: FiltersModalProps) {
   const {
     handleSelectedBankAccount,
     selectedBankAccountId,
     handleYearChange,
     selectedYear,
+    accounts,
   } = useFiltersModal();
 
   return (
@@ -41,7 +27,7 @@ export function FiltersModal({ onClose, open }: FiltersModalProps) {
         </span>
 
         <div className="space-y-2 mt-2">
-          {mockBankAccount.map((account) => (
+          {accounts.map((account) => (
             <button
               key={account.id}
               onClick={() => handleSelectedBankAccount(account.id)}

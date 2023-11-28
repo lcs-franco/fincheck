@@ -15,6 +15,7 @@ export function NewTransactionModal() {
     control,
     errors,
     handleSubmit,
+    accounts,
     register,
   } = useNewTransactionModalController();
 
@@ -91,20 +92,10 @@ export function NewTransactionModal() {
                 onChange={onChange}
                 value={value}
                 error={errors.bankAccountId?.message}
-                options={[
-                  {
-                    value: 'CHECKING',
-                    label: 'Conta Corrente',
-                  },
-                  {
-                    value: 'INVESTMENT',
-                    label: 'Investimentos',
-                  },
-                  {
-                    value: 'CASH',
-                    label: 'Dinheiro Físico',
-                  },
-                ]}
+                options={accounts.map((account) => ({
+                  value: account.id,
+                  label: account.name,
+                }))}
               />
             )}
           />

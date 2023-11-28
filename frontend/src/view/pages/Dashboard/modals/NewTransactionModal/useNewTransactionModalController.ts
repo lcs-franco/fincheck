@@ -3,6 +3,7 @@ import { z } from 'zod';
 import { useDashboard } from '../../components/DashboardContext/useDashboard';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useBankAccounts } from '../../../../../app/hooks/useBankAccounts';
 
 const schema = z.object({
   value: z.string().min(1, 'Informe o valor'),
@@ -34,6 +35,8 @@ export function useNewTransactionModalController() {
     console.log(data);
   });
 
+  const { accounts } = useBankAccounts();
+
   return {
     isNewTransactionModalOpen,
     closeNewTransactionModal,
@@ -42,5 +45,6 @@ export function useNewTransactionModalController() {
     control,
     errors,
     handleSubmit,
+    accounts,
   };
 }

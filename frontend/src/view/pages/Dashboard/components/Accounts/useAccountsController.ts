@@ -2,8 +2,7 @@ import { useMemo, useState } from 'react';
 
 import { useDashboard } from '../DashboardContext/useDashboard';
 import { useWindowWidth } from '../../../../../app/hooks/useWindowWidth';
-import { useQuery } from '@tanstack/react-query';
-import { bankAccountsService } from '../../../../../app/services/bankAccountsService';
+import { useBankAccounts } from '../../../../../app/hooks/useBankAccounts';
 
 export function useAccountsController() {
   const windowWidth = useWindowWidth();
@@ -15,16 +14,14 @@ export function useAccountsController() {
     isEnd: false,
   });
 
-  const { data, isFetching } = useQuery({
-    queryKey: ['bankAccounts'],
-    queryFn: bankAccountsService.getAll,
-  });
+  const { accounts, isFetching } = useBankAccounts();
 
   const currencyBalance = useMemo(() => {
-    if (!data) return 0;
-
-    return data.reduce((total, accounts) => total + accounts.currentBalance, 0);
-  }, [data]);
+    return accounts.reduce(
+      (total, accounts) => total + accounts.currentBalance,
+      0
+    );
+  }, [accounts]);
 
   return {
     sliderState,
@@ -33,7 +30,7 @@ export function useAccountsController() {
     areValuesVisible,
     toggleValuesVisibility,
     isLoading: isFetching,
-    accounts: data ?? [],
+    accounts,
     openNewAccountModal,
     currencyBalance,
   };
