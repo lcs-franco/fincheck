@@ -1,4 +1,5 @@
 import { Controller } from 'react-hook-form';
+
 import { Button } from '../../../../components/Button';
 import { ColorsDropdown } from '../../../../components/ColorsDropdown';
 import { Input } from '../../../../components/Input';
@@ -6,6 +7,8 @@ import { InputCurrency } from '../../../../components/InputCurrency';
 import { Modal } from '../../../../components/Modal';
 import { Select } from '../../../../components/Select';
 import { useEditAccountModalController } from './useEditAccountModalController';
+import { TrashIcon } from '../../../../components/icons/TrashIcon';
+import { DeleteModal } from '../../../../components/DeleteModal';
 
 export function EditAccountModal() {
   const {
@@ -15,14 +18,37 @@ export function EditAccountModal() {
     handleSubmit,
     register,
     control,
-    isLoading,
+    loadingUpdate,
+    isDeleteModalOpen,
+    handleOpenDeleteModal,
+    handleCloseDeleteModal,
+    handleDeleteAccount,
+    loadingDelete,
   } = useEditAccountModalController();
+
+  if (isDeleteModalOpen) {
+    return (
+      <DeleteModal
+        onConfirm={handleDeleteAccount}
+        onClose={handleCloseDeleteModal}
+        isLoading={loadingDelete}
+        title="Ter certeza que deseja excluir essa conta ?"
+        description="Ao excluir a conta, também serão excluídos todos os registros de
+        despesas e receitas relacionados"
+      />
+    );
+  }
 
   return (
     <Modal
       title="Editar Conta"
       open={isEditAccountModalOpen}
       onClose={closeEditAccountModal}
+      rightAction={
+        <button onClick={handleOpenDeleteModal}>
+          <TrashIcon className="w-6 h-6 text-red-900" />
+        </button>
+      }
     >
       <form onSubmit={handleSubmit}>
         <div>
@@ -95,7 +121,11 @@ export function EditAccountModal() {
             )}
           />
 
-          <Button type="submit" className="w-full mt-6" isPending={isLoading}>
+          <Button
+            type="submit"
+            className="w-full mt-6"
+            isPending={loadingUpdate}
+          >
             Salvar
           </Button>
         </div>
