@@ -94,8 +94,13 @@ export function NewTransactionModal() {
           <Controller
             control={control}
             name="date"
+            defaultValue={new Date()}
             render={({ field: { value, onChange } }) => (
-              <DataPickerInput value={value} onChange={onChange} />
+              <DataPickerInput
+                value={value}
+                onChange={onChange}
+                error={errors.date?.message}
+              />
             )}
           />
 
