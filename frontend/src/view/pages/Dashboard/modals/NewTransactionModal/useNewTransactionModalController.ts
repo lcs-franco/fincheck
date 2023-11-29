@@ -4,6 +4,8 @@ import { useDashboard } from '../../components/DashboardContext/useDashboard';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useBankAccounts } from '../../../../../app/hooks/useBankAccounts';
+import { useCategories } from '../../../../../app/hooks/useCategories';
+import { useMemo } from 'react';
 
 const schema = z.object({
   value: z.string().min(1, 'Informe o valor'),
@@ -36,6 +38,13 @@ export function useNewTransactionModalController() {
   });
 
   const { accounts } = useBankAccounts();
+  const { categories: categoriesList } = useCategories();
+
+  const categories = useMemo(() => {
+    return categoriesList.filter(
+      (category) => category.type === newTransactionType
+    );
+  }, [categoriesList, newTransactionType]);
 
   return {
     isNewTransactionModalOpen,
@@ -46,5 +55,6 @@ export function useNewTransactionModalController() {
     errors,
     handleSubmit,
     accounts,
+    categories,
   };
 }
