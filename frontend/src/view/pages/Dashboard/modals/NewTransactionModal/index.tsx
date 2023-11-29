@@ -17,6 +17,7 @@ export function NewTransactionModal() {
     handleSubmit,
     accounts,
     register,
+    isLoading,
     categories,
   } = useNewTransactionModalController();
 
@@ -104,7 +105,7 @@ export function NewTransactionModal() {
             )}
           />
 
-          <Button type="submit" className="w-full mt-6">
+          <Button type="submit" className="w-full mt-6" isPending={isLoading}>
             Criar
           </Button>
         </div>
