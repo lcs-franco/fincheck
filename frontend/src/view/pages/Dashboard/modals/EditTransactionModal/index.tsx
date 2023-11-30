@@ -28,7 +28,7 @@ export function EditTransactionModal({
     register,
     isLoading,
     categories,
-  } = useEditTransactionModalController(transaction);
+  } = useEditTransactionModalController(transaction, onClose);
 
   const isExpense = transaction?.type === 'EXPENSE';
 
