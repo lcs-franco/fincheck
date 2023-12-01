@@ -59,6 +59,7 @@ export function useNewTransactionModalController() {
         date: data.date.toISOString(),
       });
 
+      queryClient.invalidateQueries({ queryKey: ['bankAccounts'] });
       queryClient.invalidateQueries({ queryKey: ['transactions'] });
       toast.success(
         newTransactionType === 'EXPENSE'
