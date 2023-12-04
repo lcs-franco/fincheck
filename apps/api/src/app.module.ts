@@ -8,6 +8,8 @@ import { AuthGuard } from './modules/auth/auth.guard';
 import { CategoriesModule } from './modules/categories/categories.module';
 import { BankAccountsModule } from './modules/bank-accounts/bank-accounts.module';
 import { TransactionsModule } from './modules/transactions/transactions.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -17,6 +19,9 @@ import { TransactionsModule } from './modules/transactions/transactions.module';
     CategoriesModule,
     BankAccountsModule,
     TransactionsModule,
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '../..', 'frontend', 'dist'),
+    }),
   ],
   controllers: [],
   providers: [
