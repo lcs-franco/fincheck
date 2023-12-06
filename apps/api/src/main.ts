@@ -15,7 +15,9 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('FinCheck')
-    .setDescription('FinCheck API description')
+    .setDescription(
+      'Complete documentation of the routes, with the parameters of each request, as well as each route response. To see the application running, remove the "/api#" from the URL',
+    )
     .setVersion('1.0')
     .addBearerAuth(
       {
