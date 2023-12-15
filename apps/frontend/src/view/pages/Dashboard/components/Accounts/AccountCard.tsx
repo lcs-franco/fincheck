@@ -35,7 +35,7 @@ export function AccountCard({ data }: AccountCardProps) {
         >
           {formatCurrency(currentBalance)}
         </span>
-        <small className="text-gray-600 text-sm">Salto atual</small>
+        <small className="text-gray-600 text-sm">Saldo atual</small>
       </div>
     </div>
   );
