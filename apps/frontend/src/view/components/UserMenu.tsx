@@ -7,7 +7,12 @@ export function UserMenu() {
 
   function avatar(name: string) {
     const names = name.split(' ');
-    return names[0].charAt(0) + names[1].charAt(0);
+
+    if (names.length >= 2) {
+      return names[0].charAt(0) + names[1].charAt(0);
+    } else {
+      return names[0].charAt(0);
+    }
   }
 
   return (
