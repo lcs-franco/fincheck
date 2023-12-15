@@ -48,6 +48,7 @@
 - Prisma
 - PostgreSQL
 - API REST
+- Swagger
 - JWT (Autenticação)
 
 Para explorar a documentação completa das rotas, acesse: <a target="_blank" href="https://fi-rmst.onrender.com/api#">Documentação da API</a>
