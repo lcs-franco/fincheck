@@ -1,5 +1,4 @@
 import { Test, TestingModule } from '@nestjs/testing';
-
 import { UsersController } from './users.controller';
 import { UsersService } from './users.service';
 
@@ -30,9 +29,6 @@ describe('UsersController', () => {
     it('should return the user', async () => {
       const mockUserId = 'mocked-user-id';
       const mockUser = { name: 'John', email: 'mail@mail.com' };
-
-      // Mocking the ActiveUserId decorator
-      jest.spyOn(Reflect, 'getMetadata').mockReturnValueOnce(mockUserId);
 
       // Mocking the service method
       mockUsersService.getUserById.mockResolvedValue(mockUser);
