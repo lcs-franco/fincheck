@@ -3,6 +3,7 @@
     "turbo": "^1.10.16"
   },
   "scripts": {
+    "test": "cd apps/api && yarn test",
     "dev": "turbo run dev",
     "build": "turbo run build",
     "start": "node apps/api/dist/main"
