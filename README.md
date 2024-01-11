@@ -6,27 +6,18 @@
 </div>
 
 <br>
-<br>
 
-# Funcionalidades
+# Sobre o Fincheck
 
-- **Autenticação de Usuário:**
+O Fincheck é a solução simples para o gerenciamento eficaz de suas finanças pessoais. Projetado para proporcionar uma experiência descomplicada, o Fincheck permite que você mantenha o controle total do seu dinheiro, evitando surpresas desagradáveis no final do mês.
 
-  - Login
-  - Cadastro
+## Em Desenvolvimento
 
-- **Contas Bancárias:**
+O Fincheck está em constante evolução! Planejo implementar novas funcionalidades para tornar sua experiência ainda mais completa, incluindo:
 
-  - Listagem
-  - Cadastro
-  - Atualização
-  - Remoção
-
-- **Transações Financeiras:**
-  - Listagem
-  - Cadastro
-  - Atualização
-  - Remoção
+- Recuperação de senha por e-mail;
+- Cadastro e login via Google;
+- Balanço geral;
 
 # Tecnologias Utilizadas
 
@@ -50,5 +41,22 @@
 - API REST
 - Swagger
 - JWT (Autenticação)
+- Jest (Testes Automatizados)
 
-Para explorar a documentação completa das rotas, acesse: <a target="_blank" href="https://fi-rmst.onrender.com/api#">Documentação da API</a>
+## Testes
+
+Para a realização dos testes, clone o repositório e execute o seguinte comando para a instalação de dependências:
+
+`yarn`
+
+Em seguida, execute o comando para então realizar os testes:
+
+`yarn test`
+
+Você deve ver uma tela parecida com a imagem abaixo:
+
+![Alt text](tests.png)
+
+<br>
+
+Ainda, para explorar a documentação completa das rotas, acesse: <a target="_blank" href="https://fi-rmst.onrender.com/api#">Documentação da API</a>
