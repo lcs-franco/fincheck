@@ -41,7 +41,7 @@ O Fincheck está em constante evolução! Planejo implementar novas funcionalida
 - API REST
 - Swagger
 - JWT (Autenticação)
-- Jest (Testes Automatizados)
+- Jest
 
 ## Testes
 
