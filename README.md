@@ -42,6 +42,7 @@ O Fincheck está em constante evolução! Planejo implementar novas funcionalida
 - Swagger
 - JWT (Autenticação)
 - Jest (Teste automatizados)
+- Turbo (Deploy/Monorepo)
 
 ## Testes
 
