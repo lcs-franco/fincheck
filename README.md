@@ -27,9 +27,12 @@ O Fincheck está em constante evolução! Planejo implementar novas funcionalida
 - Typescript
 - Tailwind CSS
 - Radix UI
+- Functional component
+- Context API
 - Headless UI
 - React Query
 - Axios
+- React Hooks
 - Zod
 
 ## Back-end
