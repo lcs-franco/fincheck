@@ -1,25 +1,17 @@
 <div align="center">
   <img src="./apps/frontend/src/assets/logoSVG.svg" alt="Fincheck Logo">
   <br>
-  <h1>Fincheck: Gerenciamento Simples e Eficaz das Suas Finanças Pessoais</h1>
-  <h2>Explore a plataforma em: <a target="_blank" href="https://fi-rmst.onrender.com">Fincheck</a></h2>
+  <h1>Fincheck: Simple and Effective Personal Finance Management</h1>
+  <h2>Explore the platform at: <a target="_blank" href="https://fi-rmst.onrender.com">Fincheck</a></h2>
 </div>
 
 <br>
 
-# Sobre o Fincheck
+# About Fincheck
 
-O Fincheck é a solução simples para o gerenciamento eficaz de suas finanças pessoais. Projetado para proporcionar uma experiência descomplicada, o Fincheck permite que você mantenha o controle total do seu dinheiro, evitando surpresas desagradáveis no final do mês.
+Fincheck is a simple solution for effective personal finance management. Designed to provide a seamless experience, Fincheck lets you maintain full control over your money, helping you avoid unpleasant surprises at the end of the month.
 
-## Em Desenvolvimento
-
-O Fincheck está em constante evolução! Planejo implementar novas funcionalidades para tornar sua experiência ainda mais completa, incluindo:
-
-- Recuperação de senha por e-mail;
-- Cadastro e login via Google;
-- Balanço geral;
-
-# Tecnologias Utilizadas
+# Technologies Used
 
 ## Front-end
 
@@ -27,7 +19,7 @@ O Fincheck está em constante evolução! Planejo implementar novas funcionalida
 - Typescript
 - Tailwind CSS
 - Radix UI
-- Functional component
+- Functional components
 - Context API
 - Headless UI
 - React Query
@@ -41,26 +33,26 @@ O Fincheck está em constante evolução! Planejo implementar novas funcionalida
 - Typescript
 - Prisma
 - PostgreSQL
-- API REST
+- REST API
 - Swagger
-- JWT (Autenticação)
-- Jest (Teste automatizados)
+- JWT (Authentication)
+- Jest (Automated tests)
 - Turbo (Deploy/Monorepo)
 
-## Testes
+## Testing
 
-Para a realização dos testes, clone o repositório e execute o seguinte comando para a instalação de dependências:
+To run the tests, clone the repository and run the following command to install dependencies:
 
 `yarn`
 
-Em seguida, execute o comando para então realizar os testes:
+Then, run the following command to execute the tests:
 
 `yarn test`
 
-Você deve ver uma tela parecida com a imagem abaixo:
+You should see a screen similar to the image below:
 
 ![Alt text](tests.png)
 
 <br>
 
-Ainda, para explorar a documentação completa das rotas, acesse: <a target="_blank" href="https://fi-rmst.onrender.com/api#">Documentação da API</a>
+Additionally, to explore the full route documentation, visit: <a target="_blank" href="https://fi-rmst.onrender.com/api#">API Documentation</a>
